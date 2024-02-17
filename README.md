@@ -14,7 +14,6 @@ To run this project in a local Motoko development environment, follow the steps 
 
 git clone https://github.com/mtekinn/motoko_tutorial.git
 
-
 2. Navigate to the root directory of your Motoko project:
 
 cd motoko_tutorial
@@ -24,8 +23,8 @@ cd motoko_tutorial
 dfx build
 
 4. Start the project on a local network by running the following command:
-dfx start
 
+dfx start
 
 5. Open a web browser and go to `http://localhost:8000` to use the application.
 
@@ -42,4 +41,3 @@ This To-Do application provides the following features:
 ## Contributing
 
 If you'd like to contribute to this project, please open a pull request or file an issue. Any contributions and feedback are greatly appreciated.
-
