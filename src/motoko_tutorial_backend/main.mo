@@ -19,7 +19,12 @@ actor Assistant {
     var todos = Map.HashMap<Nat, ToDo>(0, Nat.equal, natHash);
     var nextId : Nat = 0;
 
-    // assign ID
+    // get all ToDos
+    public query func getTodos() : async [ToDo] {
+        Iter.toArray(todos.vals());
+    };
+
+    // add ToDo
     public query func addTodo(description: Text) : async Nat {
         let id = nextId;
         todos.put(id, {description = description; completed = false});
@@ -27,7 +32,7 @@ actor Assistant {
         id
     };
 
-    // assign Todo
+    // complete ToDo
     public func completeTodo(id: Nat) : async () {
         ignore do ? {
             let description = todos.get(id)!.description;
@@ -36,11 +41,29 @@ actor Assistant {
     };
 
     public query func showTodos() : async Text {
-        var output : Text = "\n___TO-DOs___\n";
+    var output : Text = "\n___TODOs___\n";
 
-        for (id, todo) in Iter.toSeq(todos) {
-            output = Text.concat(output, Text.concat(Nat.toText(id), Text.concat(": ", Text.concat(todo.description, Text.concat(" (", Text.concat(Bool.toText(todo.completed), ")\n")))));
-        }
-
+    for (todo: ToDo in todos.vals()) {
+        output #= "\n" # todo.description;
+        if (todo.completed) { 
+            output #= " ✅"; 
+        };
     };
+    output # "\n";
+    };
+
+    public func clearCompleted() : async () {
+        todos := Map.mapFilter<Nat, ToDo, ToDo>(
+    todos, 
+    Nat.equal, 
+    natHash, 
+    func(_, todo) {
+        if (todo.completed) {
+            null
+        } else {
+            ?todo
+        }
+    });
+    };
+
 }
