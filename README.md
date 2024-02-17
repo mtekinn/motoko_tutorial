@@ -2,6 +2,8 @@
 
 Welcome to your new motoko_tutorial project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
 
+This project is a template for a simple internet computer application. It includes a simple frontend and a backend canister. The frontend is a simple HTML page that uses JavaScript to interact with the backend canister. The backend canister is written in the Motoko programming language and provides a simple API to the frontend.
+
 To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
 
 To learn more before you start working with motoko_tutorial, see the following documentation available online:
