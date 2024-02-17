@@ -46,7 +46,7 @@ actor Assistant {
     for (todo: ToDo in todos.vals()) {
         output #= "\n" # todo.description;
         if (todo.completed) { 
-            output #= " ✅"; 
+            output #= " (completed)"; 
         };
     };
     output # "\n";
